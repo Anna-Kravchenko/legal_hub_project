@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Замовлення успішно створено{% endblock %}
+
+{% block content %}
+<section class="order-success">
+    <h2>Ваше замовлення успішно надіслано!</h2>
+    <p>Ми зв’яжемося з вами найближчим часом.</p>
+    <a href="{% url 'order' %}">Створити ще одне замовлення</a>
+</section>
+{% endblock %}

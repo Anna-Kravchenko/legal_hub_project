@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Відгуки{% endblock %}
+
+{% block content %}
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="decor-dot">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h1>Відгуки клієнтів</h1>
+      <p>
+        Ми цінуємо довіру наших клієнтів і завжди прагнемо надавати якісний та точний переклад.
+        Довіра клієнтів — наша головна цінність. Ми пишаємося тим, що наші замовники
+  повертаються до нас знову та рекомендують нас іншим.
+  Ознайомтеся з їхніми відгуками про співпрацю з нашим бюро перекладів.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="reviews-page">
+        <div class="hero-card">
+          <div class="hero-image"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#faf8f4;">
+    <h2 class="section-title">Що кажуть наші клієнти</h2>
+    {% if reviews %}
+      <div class="reviews-grid">
+        {% for review in reviews %}
+          <article class="card">
+            <p>"{{ review.text }}"</p>
+            <div class="review-author">{{ review.client_name }}</div>
+            <p style="margin-top:10px;"><strong>Оцінка:</strong> {{ review.rating }}/5</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>Відгуків поки що немає.</p>
+    {% endif %}
+
+    {% if average_rating %}
+      <p>⭐ Середня оцінка: {{ average_rating|floatformat:1 }} / 5</p>
+    {% else %}
+      <p>Поки немає оцінок</p>
+    {% endif %}
+  </section>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% if services %}
+  <div class="services-grid">
+    {% for service in services %}
+      <article class="card">
+        <div class="service-icon">
+          {% if "Юридичний" in service.name %}
+            ⚖️
+          {% elif "Медичний" in service.name %}
+            🩺
+          {% elif "Технічний" in service.name %}
+            🛠️
+          {% else %}
+            📄
+          {% endif %}
+        </div>
+
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description }}</p>
+        <p><strong>Ціна:</strong> {{ service.price_per_word }} грн</p>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>Послуги ще не додані.</p>
+{% endif %}

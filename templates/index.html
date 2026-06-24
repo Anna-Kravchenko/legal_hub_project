@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} БЮРО ПЕРЕКЛАДІВ {% endblock %}
+
+{% block content %}
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="decor-dot">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <h1>Професійний переклад документів та текстів</h1>
+        <p>
+          Швидко, акуратно та зручно онлайн. Ми виконуємо переклад особистих,
+          юридичних, медичних і технічних документів.
+        </p>
+        <a class="btn" href="/order/">Замовити переклад</a>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+<!--          <div class="photo-placeholder">Фото / ілюстрація</div>-->
+          <div class="hero-image"></div>
+        </div>
+        <div class="contacts-mini">
+          📞 +380 66 868 54 24<br />
+          <span style="display:inline-flex; align-items:center; gap:6px;">
+            <img src="{% static 'images/telegram.png' %}"  alt="telegram" style="width:16px;">
+            <a class="link-clean" href="https://t.me/legalhubb" target="_blank">@legalhubb</a>
+          </span><br />
+          📍 м. Київ, Україна
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Чому обирають нас</h2>
+
+      <div class="services-grid">
+        <article class="card">
+          <h3>Швидкість</h3>
+          <p>Більшість перекладів виконуємо протягом 1–2 днів.</p>
+        </article>
+
+        <article class="card">
+          <h3>Якість</h3>
+          <p>Працюємо з різними тематиками та перевіряємо кожен текст.</p>
+        </article>
+
+        <article class="card">
+          <h3>Зручність</h3>
+          <p>Оформлення замовлення повністю онлайн без зайвих дзвінків.</p>
+        </article>
+
+        <article class="card">
+          <h3>Підтримка</h3>
+          <p>Завжди на зв’язку в Telegram для уточнень і допомоги.</p>
+        </article>
+      </div>
+    </section>
+    <section>
+      <h2 class="section-title">Послуги</h2>
+
+      {% if services %}
+        <div class="services-grid">
+          {% for service in services %}
+            <article class="card">
+              <div class="service-icon">
+                {% if "Юридичний" in service.name %}
+                  ⚖️
+                {% elif "Медичний" in service.name %}
+                  🩺
+                {% elif "Технічний" in service.name %}
+                  🛠️
+                {% else %}
+                  📄
+                {% endif %}
+              </div>
+              <h3>{{ service.name }}</h3>
+              <p>{{ service.description }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>Послуги поки що не додані.</p>
+      {% endif %}
+    </section>
+<!--    <section  style="background:#faf8f4;">-->
+<!--      <h2 class="section-title">Відгуки</h2>-->
+
+<!--      {% if reviews %}-->
+<!--        <div class="reviews-grid">-->
+<!--          {% for review in reviews %}-->
+<!--            <article class="card">-->
+<!--              <p>"{{ review.text }}"</p>-->
+<!--              <div class="review-author">{{ review.author }}</div>-->
+<!--            </article>-->
+<!--          {% endfor %}-->
+<!--        </div>-->
+<!--      {% else %}-->
+<!--        <p>Відгуків поки що немає.</p>-->
+<!--      {% endif %}-->
+<!--    </section>-->
+{% endblock %}

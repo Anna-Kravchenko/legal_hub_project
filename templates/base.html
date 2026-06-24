@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}LEGAL HUB{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+<main class="frame">
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">
+          <img src="{% static 'images/logo.png' %}" alt="logo">
+        </div>
+        <div>
+          <div class="logo-title">LEGAL HUB</div>
+          <small class="logo-subtitle">БЮРО ПЕРЕКЛАДІВ • з 2025 року</small>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="/">Головна</a></li>
+          <li><a href="/services/">Послуги</a></li>
+          <li><a href="/reviews/">Відгуки</a></li>
+          <li><a href="/contacts/">Контакти</a></li>
+          <li><a href="/order/">Замовити переклад</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  {% block content %}
+  {% endblock %}
+
+
+<footer>
+  <div>
+    <h4>LEGAL HUB</h4>
+    <p>Бюро перекладів для документів, юридичних, медичних і технічних текстів.</p>
+  </div>
+  <div>
+    <h4>Контакти</h4>
+    <p>+380 66 868 54 24</p>
+    <p><a class="link-clean" href="https://t.me/legalhubb" target="_blank">@legalhubb</a></p>
+    <p>м. Київ, Україна</p>
+  </div>
+</footer>
+</main>
+</body>
+</html>

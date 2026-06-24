@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Контакти{% endblock %}
+
+{% block content %}
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="decor-dot">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h1>Контакти</h1>
+      <p>
+        Зв’яжіться з нами для консультації, уточнення вартості або оформлення
+        замовлення на переклад.
+      </p>
+
+      <div class="contacts-mini">
+        📞 +380 67 123 45 67<br />
+        <span style="display:inline-flex; align-items:center; gap:6px;">
+          <img src="{% static 'images/telegram.png' %}" alt="telegram" style="width:16px;">
+          <a class="link-clean" href="https://t.me/legalhubb" target="_blank">@legalhubb</a>
+        </span><br />
+        📍 м. Київ, Україна<br />
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="contacts-page">
+        <div class="hero-card">
+          <div class="hero-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Як з нами зв’язатися</h2>
+    <div class="services-grid">
+      <article class="card">
+        <div class="service-icon">📞</div>
+        <h3>Телефон</h3>
+        <p>+380 66 868 54 24</p>
+      </article>
+
+      <article class="card">
+        <div class="service-icon">✉️</div>
+        <h3>Telegram</h3>
+        <p>@legalhubb</p>
+      </article>
+
+      <article class="card">
+        <div class="service-icon">📍</div>
+        <h3>Адреса</h3>
+        <p>м. Київ, Україна</p>
+      </article>
+
+      <article class="card">
+        <div class="service-icon">🕒</div>
+        <h3>Графік роботи</h3>
+        <p>Понеділок – П’ятниця, 09:00–18:00</p>
+      </article>
+    </div>
+  </section>
+{% endblock %}

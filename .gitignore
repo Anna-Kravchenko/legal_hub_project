@@ -6,3 +6,6 @@ debug.log
 media/
 __pycache__/
 *.pyc
+database/
+*.db
+*.sql

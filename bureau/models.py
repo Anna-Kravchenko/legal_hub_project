@@ -45,6 +45,8 @@ class Service(models.Model):
 
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
 
 class Language(models.Model):
     name = models.CharField(max_length=50)
@@ -75,21 +77,28 @@ class Order(models.Model):
 
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    source_language = models.ForeignKey(
-        Language,
-        on_delete=models.CASCADE,
-        related_name='source_orders'
-    )
-    target_language = models.ForeignKey(
-        Language,
-        on_delete=models.CASCADE,
-        related_name='target_orders'
+    # source_language = models.ForeignKey(
+    #     Language,
+    #     on_delete=models.CASCADE,
+    #     related_name='source_orders'
+    # )
+    # target_language = models.ForeignKey(
+    #     Language,
+    #     on_delete=models.CASCADE,
+    #     related_name='target_orders'
+    # )
+    is_urgent = models.BooleanField(
+        default=False,
+        verbose_name="Термінове замовлення"
     )
     comment = models.TextField(blank=True)
-    file_path = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     created_at = models.DateTimeField(auto_now_add=True)
-
+    file = models.FileField(
+        upload_to='orders/',
+        blank=True,
+        null=True
+    )
     def save(self, *args, **kwargs):
         is_new = self.pk is None
 

@@ -24,6 +24,9 @@ from bureau.views import (
     order_view,
     order_success,
 )
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,3 +37,6 @@ urlpatterns = [
     path('order/', order_view, name='order'),
     path("order/success/", order_success, name="order_success"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -29,12 +29,14 @@ class OrderAdmin(admin.ModelAdmin):
         'id',
         'client',
         'service',
-        'source_language',
-        'target_language',
+        # 'source_language',
+        # 'target_language',
+
+        "is_urgent",
         'status',
         'created_at',
     )
-    list_filter = ('status', 'service', 'source_language', 'target_language')
+    list_filter = ('status', 'service', )
     search_fields = ('client__name', 'client__email', 'comment')
     ordering = ('-created_at',)
     list_editable = ('status',)

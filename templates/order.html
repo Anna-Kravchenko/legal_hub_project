@@ -26,7 +26,7 @@
   <div class="hero-right">
     <div class="form-container center-align">
 
-      <form method="post" class="order-form"  novalidate>
+      <form method="post" class="order-form"  novalidate  enctype="multipart/form-data">
         {% csrf_token %}
 
         {% if form.non_field_errors %}
@@ -59,16 +59,22 @@
           <div class="field-error">{{ form.service.errors }}</div>
         </div>
 
-        <div class="form-group">
-          <label><strong>{{ form.source_language.label }}</strong></label><br>
-          {{ form.source_language }}
-          <div class="field-error">{{ form.source_language.errors }}</div>
-        </div>
+<!--        <div class="form-group">-->
+<!--          <label><strong>{{ form.source_language.label }}</strong></label><br>-->
+<!--          {{ form.source_language }}-->
+<!--          <div class="field-error">{{ form.source_language.errors }}</div>-->
+<!--        </div>-->
 
-        <div class="form-group">
-          <label><strong>{{ form.target_language.label }}</strong></label><br>
-          {{ form.target_language }}
-          <div class="field-error">{{ form.target_language.errors }}</div>
+<!--        <div class="form-group">-->
+<!--          <label><strong>{{ form.target_language.label }}</strong></label><br>-->
+<!--          {{ form.target_language }}-->
+<!--          <div class="field-error">{{ form.target_language.errors }}</div>-->
+<!--        </div>-->
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                {{ form.is_urgent }}
+                <span>Термінове замовлення</span>
+            </label>
         </div>
 
         <div class="form-group">
@@ -76,6 +82,22 @@
           {{ form.comment }}
           <div class="field-error">{{ form.comment.errors }}</div>
         </div>
+        <div class="form-group">
+          {{ form.file.label_tag }}
+          {{ form.file }}
+
+          <small class="form-hint">
+            За потреби додайте документ для опрацювання.
+            Підтримуються PDF, DOC, DOCX, JPG, JPEG та PNG (до 10 МБ).
+          </small>
+
+          {% if form.file.errors %}
+              <div class="field-error">
+                  {{ form.file.errors }}
+              </div>
+          {% endif %}
+        </div>
+
 
         <button class="btn" type="submit">Надіслати заявку</button>
       </form>

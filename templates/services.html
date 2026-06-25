@@ -4,48 +4,57 @@
 
 {% block content %}
 <section>
-    <h2 class="section-title">Наші послуги</h2>
+  <h2 class="section-title">Наші послуги</h2>
 
-    <div class="search-wrapper">
-      <form method="get" class="search-form">
-        <input type="text" name="q" value="{{ query }}" placeholder="Пошук послуг..." class="search-input">
-        <button type="submit" class="btn">Шукати</button>
-      </form>
+  <div class="search-wrapper">
+    <form method="get" class="search-form">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        placeholder="Пошук послуг..."
+        class="search-input"
+      >
+      <button type="submit" class="btn">Шукати</button>
+    </form>
   </div>
 
-   {% if services %}
-    <div class="services-grid">
-      {% for service in services %}
-        <article class="card">
-          <div class="service-icon">
-            {% if "Юридичний" in service.name %}
-              ⚖️
-            {% elif "Медичний" in service.name %}
-              🩺
-            {% elif "Технічний" in service.name %}
-              🛠️
-            {% else %}
-              📄
-            {% endif %}
-          </div>
-          {% if service.category %}
-            <p class="service-category">{{ service.category.name }}</p>
-          {% endif %}
-          <h3>{{ service.name }}</h3>
-          <p>{{ service.description }}</p>
-          {% if service.price %}
-              <p><strong>Ціна:</strong> {{ service.price|floatformat:0 }} грн</p>
-          {% else %}
-              <p><strong>Ціна:</strong> За домовленістю</p>
-          {% endif %}
-          {% if service.completion_time %}
-              <p><strong>Термін:</strong> {{ service.completion_time }}</p>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
+  {% if categories %}
+
+    {% for item in categories %}
+      <div class="service-category-block">
+        <h3 class="category-title">
+          {{ item.category.name }}
+        </h3>
+
+        <div class="services-grid">
+          {% for service in item.services %}
+            <article class="card">
+              <div class="service-icon">📄</div>
+
+              <h3>{{ service.name }}</h3>
+
+              {% if service.description %}
+                <p>{{ service.description }}</p>
+              {% endif %}
+
+              {% if service.price %}
+                <p><strong>Ціна:</strong> {{ service.price|floatformat:0 }} грн</p>
+              {% else %}
+                <p><strong>Ціна:</strong> За домовленістю</p>
+              {% endif %}
+
+              {% if service.completion_time %}
+                <p><strong>Термін:</strong> {{ service.completion_time }}</p>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
   {% else %}
-<!--    {% include 'includes/services_cards.html' %}-->
+
     {% if query %}
       <p>Нічого не знайдено. Спробуйте змінити запит.</p>
     {% else %}
@@ -53,22 +62,5 @@
     {% endif %}
 
   {% endif %}
-  </section>
-
+</section>
 {% endblock %}
-<!--<section>-->
-<!--  <h2 class="section-title">Наші послуги</h2>-->
-
-<!--  <div class="services-grid">-->
-<!--    {% for service in services %}-->
-<!--      <article class="card">-->
-<!--        <div class="service-icon">📄</div>-->
-<!--        <h3>{{ service.name }}</h3>-->
-<!--        <p>{{ service.description }}</p>-->
-<!--        <p><strong>Ціна:</strong> {{ service.price_per_word }} грн за слово</p>-->
-<!--      </article>-->
-<!--    {% empty %}-->
-<!--      <p>Послуги поки що відсутні.</p>-->
-<!--    {% endfor %}-->
-<!--  </div>-->
-<!--</section>-->

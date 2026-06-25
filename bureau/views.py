@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.db.models import Avg
-from .models import Service, Review, Client, Order
+from .models import Service, Review, Client, Order, ServiceCategory
 from .forms import OrderForm
 import logging
 
@@ -21,16 +21,39 @@ def home_view(request):
 def services_view(request):
     query = request.GET.get('q', '').strip()
 
-    services = Service.objects.filter(is_active=True)
+    categories = ServiceCategory.objects.prefetch_related('services').all()
 
     if query:
-        services = services.filter(
-            Q(name__icontains=query) | Q(description__icontains=query)
-        )
+        categories = [
+            {
+                "category": category,
+                "services": category.services.filter(
+                    is_active=True
+                ).filter(
+                    Q(name__icontains=query) |
+                    Q(description__icontains=query)
+                )
+            }
+            for category in categories
+        ]
 
-    return render(request, 'services.html', {
-        'services': services,
-        'query': query,
+        categories = [
+            item for item in categories
+            if item["services"].exists()
+        ]
+
+    else:
+        categories = [
+            {
+                "category": category,
+                "services": category.services.filter(is_active=True)
+            }
+            for category in categories
+        ]
+
+    return render(request, "services.html", {
+        "categories": categories,
+        "query": query,
     })
 
 
@@ -55,7 +78,7 @@ def order_view(request):
 
     if request.method == "POST":
         logger.info("Order form submitted")
-        form = OrderForm(request.POST)
+        form = OrderForm(request.POST, request.FILES)
 
         if form.is_valid():
 
@@ -79,9 +102,11 @@ def order_view(request):
             order = Order.objects.create(
                 client=client,
                 service=form.cleaned_data["service"],
-                source_language=form.cleaned_data["source_language"],
-                target_language=form.cleaned_data["target_language"],
+                # source_language=form.cleaned_data["source_language"],
+                # target_language=form.cleaned_data["target_language"],
+                is_urgent=form.cleaned_data["is_urgent"],
                 comment=form.cleaned_data["comment"],
+                file=form.cleaned_data.get("file"),
                 status="new",
             )
             logger.info("Order created: %s", order.id)

@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}LEGAL HUB{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mobile-redesign.css' %}">
   <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
 <main class="frame">
   <header>
     <div class="nav">
@@ -22,16 +23,105 @@
         </div>
       </div>
 
-      <nav>
+      <nav class="desktop-menu">
         <ul>
           <li><a href="/">Головна</a></li>
           <li><a href="/services/">Послуги</a></li>
           <li><a href="/reviews/">Відгуки</a></li>
           <li><a href="/contacts/">Контакти</a></li>
-          <li><a href="/order/">Замовити переклад</a></li>
+          <li><a href="/order/">Замовити послугу</a></li>
         </ul>
       </nav>
+      <nav class="mobile-menu">
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+          <img class="icon-blue" src="{% static 'images/icons/home-blue.png' %}" alt="">
+          <img class="icon-gold" src="{% static 'images/icons/home-gold.png' %}" alt="">
+          <span>Головна</span>
+        </a>
+
+        <a href="/services/" class="{% if '/services/' in request.path %}active{% endif %}">
+          <img class="icon-blue" src="{% static 'images/icons/services-blue.png' %}" alt="">
+          <img class="icon-gold" src="{% static 'images/icons/services-gold.png' %}" alt="">
+          <span>Послуги</span>
+        </a>
+
+        <a href="/reviews/" class="{% if '/reviews/' in request.path %}active{% endif %}">
+          <img class="icon-blue" src="{% static 'images/icons/reviews-blue.png' %}" alt="">
+          <img class="icon-gold" src="{% static 'images/icons/reviews-gold.png' %}" alt="">
+          <span>Відгуки</span>
+        </a>
+
+        <a href="/contacts/" class="{% if '/contacts/' in request.path %}active{% endif %}">
+          <img class="icon-blue" src="{% static 'images/icons/contacts-blue.png' %}" alt="">
+          <img class="icon-gold" src="{% static 'images/icons/contacts-gold.png' %}" alt="">
+          <span>Контакти</span>
+        </a>
+      </nav>
     </div>
+    <div class="mobile-hero-content">
+      <h1>Професійні юридичні та перекладацькі послуги</h1>
+      <p>Якість, точність, конфіденційність</p>
+      <a href="/order/" class="mobile-hero-btn">Замовити послугу</a>
+      <a
+        href="https://t.me/legalhubb"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-telegram-btn"
+      >
+        <span>✈</span>
+        Написати в Telegram
+      </a>
+    </div>
+
+  <button
+    type="button"
+    class="mobile-burger"
+    id="mobileBurger"
+    aria-label="Відкрити меню"
+    aria-controls="burgerMenu"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="burger-menu" id="burgerMenu">
+    <div class="burger-menu__header">
+      <strong>Меню</strong>
+
+      <button
+        type="button"
+        class="burger-menu__close"
+        id="burgerMenuClose"
+        aria-label="Закрити меню"
+      >
+        ×
+      </button>
+    </div>
+
+    <nav class="burger-menu__nav">
+      <a href="{% url 'home' %}">Головна</a>
+      <a href="{% url 'services' %}">Послуги</a>
+      <a href="{% url 'reviews' %}">Відгуки</a>
+      <a href="{% url 'contacts' %}">Контакти</a>
+
+      <a href="{% url 'order' %}" class="burger-menu__order">
+        Замовити послугу
+      </a>
+
+      <a
+        href="https://t.me/legalhubb"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="burger-menu__telegram"
+      >
+        Написати в Telegram
+      </a>
+    </nav>
+  </div>
+
+  <div class="burger-menu-overlay" id="burgerMenuOverlay"></div>
   </header>
 
 
@@ -39,12 +129,12 @@
   {% endblock %}
 
 
-<footer>
+<footer class="site-footer">
   <div>
     <h4>LEGAL HUB</h4>
     <p>Бюро перекладів для документів, юридичних, медичних і технічних текстів.</p>
   </div>
-  <div>
+  <div class="site-footer__contacts">
     <h4>Контакти</h4>
     <p>+380 66 868 54 24</p>
     <p><a class="link-clean" href="https://t.me/legalhubb" target="_blank">@legalhubb</a></p>
@@ -52,5 +142,56 @@
   </div>
 </footer>
 </main>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const burgerButton = document.getElementById("mobileBurger");
+    const burgerMenu = document.getElementById("burgerMenu");
+    const closeButton = document.getElementById("burgerMenuClose");
+    const overlay = document.getElementById("burgerMenuOverlay");
+
+    if (!burgerButton || !burgerMenu || !closeButton || !overlay) {
+      return;
+    }
+
+    function openMenu() {
+      burgerMenu.classList.add("is-open");
+      overlay.classList.add("is-open");
+      burgerButton.classList.add("is-open");
+      burgerButton.setAttribute("aria-expanded", "true");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMenu() {
+      burgerMenu.classList.remove("is-open");
+      overlay.classList.remove("is-open");
+      burgerButton.classList.remove("is-open");
+      burgerButton.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    }
+
+    burgerButton.addEventListener("click", function () {
+      const isOpen = burgerMenu.classList.contains("is-open");
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeButton.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    burgerMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  });
+</script>
 </body>
 </html>

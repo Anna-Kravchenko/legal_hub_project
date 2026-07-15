@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block title %} БЮРО ПЕРЕКЛАДІВ {% endblock %}
+
+{% block body_class %}home-page{% endblock %}
 
 {% block content %}
 
@@ -19,7 +22,6 @@
         </p>
         <a class="btn" href="/order/">Замовити переклад</a>
       </div>
-
       <div class="hero-right">
         <div class="hero-card">
 <!--          <div class="photo-placeholder">Фото / ілюстрація</div>-->
@@ -35,59 +37,203 @@
         </div>
       </div>
     </section>
+    <section class="home-categories">
+      <h2 class="section-title">Наші послуги</h2>
+      <div class="home-search">
+        <form method="get" action="{% url 'services' %}" class="home-search__form">
+          <span class="home-search__icon">⌕</span>
 
-    <section>
-      <h2 class="section-title">Чому обирають нас</h2>
+          <input
+            type="text"
+            name="q"
+            placeholder="Пошук послуг..."
+            aria-label="Пошук послуг"
+          >
 
-      <div class="services-grid">
-        <article class="card">
-          <h3>Швидкість</h3>
-          <p>Більшість перекладів виконуємо протягом 1–2 днів.</p>
-        </article>
+          <button type="submit">Шукати</button>
+        </form>
+      </div>
 
-        <article class="card">
-          <h3>Якість</h3>
-          <p>Працюємо з різними тематиками та перевіряємо кожен текст.</p>
-        </article>
+      <div class="home-category-grid">
 
-        <article class="card">
-          <h3>Зручність</h3>
-          <p>Оформлення замовлення повністю онлайн без зайвих дзвінків.</p>
-        </article>
+        <a href="/services/" class="home-category-card">
+          <div class="home-category-card__top">
+            <img
+                src="{% static 'images/icons/doc-blue.png' %}"
+                alt=""
+                class="home-category-card__icon"
+            >
 
-        <article class="card">
-          <h3>Підтримка</h3>
-          <p>Завжди на зв’язку в Telegram для уточнень і допомоги.</p>
-        </article>
+            <h3>Довідки та документи</h3>
+
+          </div>
+
+<!--          <span class="home-category-card__line"></span>-->
+
+          <p>Оформлення довідок, дублікатів та документів</p>
+
+
+        </a>
+
+
+        <a href="/services/" class="home-category-card">
+          <div class="home-category-card__top">
+            <img
+              src="{% static 'images/icons/scales-blue.png' %}"
+              alt=""
+              class="home-category-card__icon"
+            >
+
+            <h3>Нотаріальні послуги</h3>
+          </div>
+
+<!--          <span class="home-category-card__line"></span>-->
+
+          <p>Заяви, довіреності та супровід документів</p>
+
+
+        </a>
+
+
+        <a href="/services/" class="home-category-card">
+          <div class="home-category-card__top">
+            <img
+              src="{% static 'images/icons/apostille-blue.png' %}"
+              alt=""
+              class="home-category-card__icon"
+            >
+
+            <h3>Апостиль та легалізація</h3>
+          </div>
+
+<!--          <span class="home-category-card__line"></span>-->
+
+          <p>Апостиль, легалізація та підготовка документів</p>
+
+
+        </a>
+
+
+        <a href="/services/" class="home-category-card">
+          <div class="home-category-card__top">
+            <img
+              src="{% static 'images/icons/other-blue.png' %}"
+              alt=""
+              class="home-category-card__icon"
+            >
+
+            <h3>Інші послуги</h3>
+          </div>
+
+<!--          <span class="home-category-card__line"></span>-->
+
+          <p>Консультації та допомога з документами</p>
+
+
+        </a>
+
+      </div>
+      <div class="all-services-link">
+        <a href="{% url 'services' %}" class="btn">
+          Переглянути всі послуги
+        </a>
       </div>
     </section>
-    <section>
-      <h2 class="section-title">Послуги</h2>
-
-      {% if services %}
-        <div class="services-grid">
-          {% for service in services %}
-            <article class="card">
-              <div class="service-icon">
-                {% if "Юридичний" in service.name %}
-                  ⚖️
-                {% elif "Медичний" in service.name %}
-                  🩺
-                {% elif "Технічний" in service.name %}
-                  🛠️
-                {% else %}
-                  📄
-                {% endif %}
-              </div>
-              <h3>{{ service.name }}</h3>
-              <p>{{ service.description }}</p>
-            </article>
-          {% endfor %}
+    <section class="advantages-section">
+      <div class="advantages-card">
+        <div class="advantages-heading">
+          <img
+            src="{% static 'images/icons/shield-blue.png' %}"
+            alt=""
+            class="advantages-heading__icon"
+          >
+          <h2>Чому обирають нас?</h2>
         </div>
-      {% else %}
-        <p>Послуги поки що не додані.</p>
-      {% endif %}
+
+        <div class="advantages-grid">
+          <div class="advantage-item">
+            <img
+                src="{% static 'images/icons/award.png' %}"
+                class="advantage-item__icon"
+                alt=""
+            >
+            <p>Професіоналізм<br>та досвід</p>
+          </div>
+
+          <div class="advantage-item">
+            <img
+                src="{% static 'images/icons/lock.png' %}"
+                class="advantage-item__icon"
+                alt=""
+            >
+            <p>Конфіденційність<br>гарантована</p>
+          </div>
+
+          <div class="advantage-item">
+            <img
+                src="{% static 'images/icons/clock.png' %}"
+                class="advantage-item__icon"
+                alt=""
+            >
+            <p>Оперативність<br>та точність</p>
+          </div>
+        </div>
+      </div>
     </section>
+    <section class="home-contact-cta">
+      <div class="home-contact-cta__content">
+        <p class="home-contact-cta__eyebrow">Потрібна консультація?</p>
+
+        <h2>Допоможемо обрати потрібну послугу</h2>
+
+        <p class="home-contact-cta__text">
+          Напишіть нам у Telegram або залиште заявку на сайті.
+        </p>
+
+        <div class="home-contact-cta__actions">
+          <a href="{% url 'order' %}" class="home-contact-cta__primary">
+            Замовити послугу
+          </a>
+
+          <a
+            href="https://t.me/legalhubb"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="home-contact-cta__telegram"
+          >
+            Telegram
+          </a>
+        </div>
+      </div>
+    </section>
+<!--    <section>-->
+<!--      <h2 class="section-title">Послуги</h2>-->
+
+<!--      {% if services %}-->
+<!--        <div class="services-grid">-->
+<!--          {% for service in services %}-->
+<!--            <article class="card">-->
+<!--              <div class="service-icon">-->
+<!--                {% if "Юридичний" in service.name %}-->
+<!--                  ⚖️-->
+<!--                {% elif "Медичний" in service.name %}-->
+<!--                  🩺-->
+<!--                {% elif "Технічний" in service.name %}-->
+<!--                  🛠️-->
+<!--                {% else %}-->
+<!--                  📄-->
+<!--                {% endif %}-->
+<!--              </div>-->
+<!--              <h3>{{ service.name }}</h3>-->
+<!--              <p>{{ service.description }}</p>-->
+<!--            </article>-->
+<!--          {% endfor %}-->
+<!--        </div>-->
+<!--      {% else %}-->
+<!--        <p>Послуги поки що не додані.</p>-->
+<!--      {% endif %}-->
+<!--    </section>-->
+
 <!--    <section  style="background:#faf8f4;">-->
 <!--      <h2 class="section-title">Відгуки</h2>-->
 

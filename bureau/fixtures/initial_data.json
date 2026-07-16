@@ -1,0 +1,6 @@
+[
+{
+  "model": "bureau.servicecategory",
+  "pk": 1,
+  "fields": {
+    "name": 

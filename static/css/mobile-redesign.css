@@ -260,7 +260,7 @@ body:not(.home-page) .mobile-hero-content {
   }
 
   body:not(.home-page) section {
-    /*padding-top: 44px;*/
+    padding-top: 44px;
   }
 
   .search-wrapper {
@@ -318,6 +318,10 @@ body:not(.home-page) .mobile-hero-content {
     padding: 20px 22px 20px 72px;
     border-radius: 22px;
     box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  }
+
+  .services-page-section{
+    padding-top: 76px !important;
   }
 
   .service-icon {
@@ -776,7 +780,7 @@ body:not(.home-page) .mobile-hero-content {
    .reviews-hero {
     display: block !important;
     min-height: auto;
-    padding: 76px 22px 0px !important;
+    /*padding: 76px 22px 0px !important;*/
     border-bottom-width: 6px;
   }
 

@@ -3,4 +3,337 @@
   "model": "bureau.servicecategory",
   "pk": 1,
   "fields": {
-    "name": 
+    "name": "Довідки та документи"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 2,
+  "fields": {
+    "name": "Документи водія"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 3,
+  "fields": {
+    "name": "Документи РАЦС"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 4,
+  "fields": {
+    "name": "Довідки державних органів"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 5,
+  "fields": {
+    "name": "Освітні документи"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 6,
+  "fields": {
+    "name": "Нотаріальні заяви"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 7,
+  "fields": {
+    "name": "Судові справи"
+  }
+},
+{
+  "model": "bureau.servicecategory",
+  "pk": 8,
+  "fields": {
+    "name": "Легалізація документів"
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "Довідка про несудимість",
+    "description": "Оформлення довідки про несудимість у стандартний термін.",
+    "price": "1100.00",
+    "completion_time": "10 робочих днів",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "Довідка про несудимість з апостилем",
+    "description": "Оформлення довідки про несудимість з проставленням апостиля.",
+    "price": "1800.00",
+    "completion_time": "15 робочих днів",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "Термінове оформлення довідки про несудимість",
+    "description": "Термінове оформлення довідки про несудимість. Вартість залежить від строків.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "Довідка про дійсність водійського посвідчення з апостилем",
+    "description": "Отримання довідки про дійсність водійського посвідчення з апостилем.",
+    "price": "2500.00",
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Верифікація посвідчення водія",
+    "description": "Перевірка та підтвердження даних водійського посвідчення.",
+    "price": "2000.00",
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "Отримання оригіналу посвідчення водія",
+    "description": "Допомога з отриманням оригіналу посвідчення водія.",
+    "price": "4000.00",
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Отримання дублікатів документів РАЦС",
+    "description": "Отримання дублікатів свідоцтва про народження, шлюб та інших актових документів.",
+    "price": "2500.00",
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 8,
+  "fields": {
+    "category": 3,
+    "name": "Поновлення, доповнення або внесення змін до актових записів",
+    "description": "Допомога з поновленням, доповненням або внесенням змін до актових записів.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 9,
+  "fields": {
+    "category": 4,
+    "name": "Довідка про відсутність податкового боргу",
+    "description": "Отримання довідки про відсутність податкового боргу.",
+    "price": "3500.00",
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 10,
+  "fields": {
+    "category": 4,
+    "name": "Отримання ІПН для іноземця",
+    "description": "Допомога з отриманням індивідуального податкового номера для іноземця.",
+    "price": "3500.00",
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 11,
+  "fields": {
+    "category": 5,
+    "name": "Апостиль освітніх документів",
+    "description": "Апостиль дипломів, атестатів та інших освітніх документів.",
+    "price": null,
+    "completion_time": "Залежить від року видачі та терміновості",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 12,
+  "fields": {
+    "category": 6,
+    "name": "Заява про неперебування у шлюбі",
+    "description": "Оформлення заяви про сімейний стан без особистої присутності.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 13,
+  "fields": {
+    "category": 7,
+    "name": "Визнання факту смерті на тимчасово окупованій території",
+    "description": "Юридичний супровід справи про встановлення факту смерті.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 14,
+  "fields": {
+    "category": 7,
+    "name": "Розірвання шлюбу",
+    "description": "Юридичний супровід справи про розірвання шлюбу.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 15,
+  "fields": {
+    "category": 7,
+    "name": "Стягнення аліментів",
+    "description": "Юридичний супровід справи про стягнення аліментів.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 16,
+  "fields": {
+    "category": 7,
+    "name": "Інші судові справи",
+    "description": "Консультація та супровід інших судових справ.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.service",
+  "pk": 17,
+  "fields": {
+    "category": 8,
+    "name": "Апостиль на документи РАЦС",
+    "description": "Проставлення апостиля на документи РАЦС.",
+    "price": null,
+    "completion_time": "За домовленістю",
+    "is_active": true
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 1,
+  "fields": {
+    "client_name": "Олена К.",
+    "text": "Замовляла довідку про несудимість з апостилем. Усе пояснили зрозуміло, документи підготували в обіцяний термін. Окремо сподобалося, що завжди були на зв’язку в Telegram.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:04:31.386Z"
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 2,
+  "fields": {
+    "client_name": "Ігор М.",
+    "text": "Звертався щодо апостиля на документи про освіту. Швидко перевірили, що саме потрібно, підказали по строках і вартості. Результатом задоволений.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:04:47.847Z"
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 3,
+  "fields": {
+    "client_name": "Наталя С.",
+    "text": "Потрібно було отримати дублікат свідоцтва про народження. Я переживала, що процес затягнеться, але все організували без зайвої бюрократії. Дякую за уважність.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:05:07.640Z"
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 4,
+  "fields": {
+    "client_name": "Андрій П.",
+    "text": "Оформлював довідку про дійсність водійського посвідчення з апостилем. Спілкування чітке, без зайвих обіцянок. Документ отримав вчасно.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:05:24.159Z"
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 5,
+  "fields": {
+    "client_name": "Марина В.",
+    "text": "Зверталася за консультацією щодо нотаріальної заяви. Мені детально пояснили порядок дій і допомогли правильно підготувати документи. Дуже професійний підхід.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:05:39.161Z"
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 6,
+  "fields": {
+    "client_name": "Сергій Л.",
+    "text": "Потрібна була довідка про відсутність податкового боргу. Все зробили дистанційно, постійно повідомляли про статус. Це дуже зручно.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:05:54.992Z"
+  }
+},
+{
+  "model": "bureau.review",
+  "pk": 7,
+  "fields": {
+    "client_name": "Дмитро Б.",
+    "text": "Замовляв термінове оформлення документів. Одразу попередили про реальні строки та вартість. Усе виконали без затримок.",
+    "rating": 5,
+    "is_published": true,
+    "created_at": "2026-07-15T16:06:24.328Z"
+  }
+}
+]

@@ -23,6 +23,7 @@ from bureau.views import (
     contacts_view,
     order_view,
     order_success,
+    protected_media,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -36,6 +37,11 @@ urlpatterns = [
     path('contacts/', contacts_view, name='contacts'),
     path('order/', order_view, name='order'),
     path("order/success/", order_success, name="order_success"),
+
+    path("admin/", admin.site.urls),
+
+    path("media/<path:path>", protected_media, name="protected_media"),
+
 ]
 
 if settings.DEBUG:

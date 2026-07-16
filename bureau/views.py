@@ -4,6 +4,12 @@ from django.db.models import Avg
 from .models import Service, Review, Client, Order, ServiceCategory
 from .forms import OrderForm
 import logging
+from pathlib import Path
+from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
+from django.core.exceptions import SuspiciousFileOperation
+from django.http import FileResponse, Http404
+from django.utils._os import safe_join
 
 logger = logging.getLogger('bureau')
 
@@ -123,3 +129,21 @@ def order_view(request):
 
 def order_success(request):
     return render(request, "order_success.html")
+
+
+@staff_member_required(login_url="/admin/login/")
+def protected_media(request, path):
+
+    try:
+        full_path = safe_join(settings.MEDIA_ROOT, path)
+    except SuspiciousFileOperation:
+        raise Http404("Файл не найден")
+
+    if not os.path.isfile(full_path):
+        raise Http404("Файл не найден")
+
+    return FileResponse(
+        open(full_path, "rb"),
+        as_attachment=True,
+        filename=Path(full_path).name,
+    )

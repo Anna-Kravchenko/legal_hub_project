@@ -4,6 +4,7 @@ from django.db.models import Avg
 from .models import Service, Review, Client, Order, ServiceCategory
 from .forms import OrderForm
 import logging
+import os
 from pathlib import Path
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required

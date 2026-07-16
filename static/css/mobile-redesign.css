@@ -571,8 +571,8 @@ body:not(.home-page) .mobile-hero-content {
     margin: 12px 0 0;
 
     color: var(--muted);
-    font-size: 11px;
-    line-height: 1.35;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .home-category-card__arrow {
@@ -853,6 +853,9 @@ body:not(.home-page) .mobile-hero-content {
   .home-category-grid {
     grid-template-columns: 1fr;
   }
+  .home-category-card p{
+
+  }
 }
 
 
@@ -916,6 +919,7 @@ body:not(.home-page) .mobile-hero-content {
 @media (max-width: 380px) {
   .home-category-grid {
     grid-template-columns: 1fr;
+    min-height: 130px;
   }
 
   .home-category-card {
@@ -925,6 +929,10 @@ body:not(.home-page) .mobile-hero-content {
 
   .home-category-card h3 {
     font-size: 21px;
+  }
+  .home-category-card p {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 

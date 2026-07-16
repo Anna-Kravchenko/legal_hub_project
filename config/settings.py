@@ -28,11 +28,20 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-local-development-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
+
 RAILWAY_PUBLIC_DOMAIN = os.getenv("RAILWAY_PUBLIC_DOMAIN")
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "legalhubproject-production.up.railway.app",
+]
+
+if RAILWAY_PUBLIC_DOMAIN:
+    ALLOWED_HOSTS.append(RAILWAY_PUBLIC_DOMAIN)
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://legalhubproject-production.up.railway.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = []

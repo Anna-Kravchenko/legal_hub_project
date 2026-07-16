@@ -44,7 +44,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://legalhubproject-production.up.railway.app",
 ]
 
-CSRF_TRUSTED_ORIGINS = []
 
 if RAILWAY_PUBLIC_DOMAIN:
     ALLOWED_HOSTS.append(RAILWAY_PUBLIC_DOMAIN)

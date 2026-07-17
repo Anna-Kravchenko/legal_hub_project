@@ -810,6 +810,39 @@ body:not(.home-page) .mobile-hero-content {
   .reviews-hero {
     border-bottom: none !important;
   }
+  .reviews-grid{
+    grid-template-columns:1fr;
+  }
+
+  .review-card{
+    padding:22px;
+  }
+
+  .review-header{
+    gap:14px;
+    margin-bottom:16px;
+  }
+
+  .review-avatar{
+    width:46px;
+    height:46px;
+    font-size:20px;
+  }
+
+  .review-author{
+    font-size:18px;
+  }
+
+  .review-rating{
+    font-size:12px;
+  }
+
+  .review-text{
+    font-size:16px;
+    line-height:1.5;
+  }
+
+
 }
 
 @media (max-width: 370px) {
